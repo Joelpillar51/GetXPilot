@@ -1,7 +1,8 @@
 
 import { Button } from "@/components/ui/button";
-import { Twitter, Bell, Settings } from "lucide-react";
+import { Twitter, Bell, Settings, User, Link2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 export const DashboardHeader = () => {
   return (
@@ -22,15 +23,28 @@ export const DashboardHeader = () => {
         </nav>
         
         <div className="flex items-center space-x-4">
+          <Button variant="outline" size="sm">
+            <Link2 className="w-4 h-4 mr-2" />
+            Connect Twitter
+          </Button>
           <Button variant="ghost" size="sm">
             <Bell className="w-4 h-4" />
           </Button>
-          <Button variant="ghost" size="sm">
-            <Settings className="w-4 h-4" />
-          </Button>
-          <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
-            JD
-          </div>
+          <Link to="/settings">
+            <Button variant="ghost" size="sm">
+              <Settings className="w-4 h-4" />
+            </Button>
+          </Link>
+          <Link to="/profile">
+            <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+              <Avatar className="w-6 h-6">
+                <AvatarFallback className="bg-blue-600 text-white text-xs">
+                  JP
+                </AvatarFallback>
+              </Avatar>
+              <span className="hidden sm:inline text-sm">Joel</span>
+            </Button>
+          </Link>
         </div>
       </div>
     </header>

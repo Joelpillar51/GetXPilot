@@ -8,7 +8,7 @@ import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
-import { Bell, Shield, Palette, Download, Trash2, Save } from "lucide-react";
+import { Bell, Shield, Palette, Download, Trash2, Save, Twitter, Link2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Settings = () => {
@@ -33,7 +33,7 @@ const Settings = () => {
       timezone: "UTC-8"
     },
     account: {
-      email: "john.doe@example.com",
+      email: "joel.pillar@example.com",
       phone: "+1 (555) 123-4567"
     }
   });
@@ -44,6 +44,13 @@ const Settings = () => {
     toast({
       title: "Settings Saved",
       description: "Your settings have been updated successfully!"
+    });
+  };
+
+  const handleConnectTwitter = () => {
+    toast({
+      title: "Twitter Connection",
+      description: "Redirecting to Twitter for authentication...",
     });
   };
 
@@ -70,11 +77,12 @@ const Settings = () => {
       </div>
 
       <Tabs defaultValue="notifications" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-5">
+        <TabsList className="grid w-full grid-cols-6">
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
           <TabsTrigger value="privacy">Privacy</TabsTrigger>
           <TabsTrigger value="appearance">Appearance</TabsTrigger>
           <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="integrations">Integrations</TabsTrigger>
           <TabsTrigger value="data">Data</TabsTrigger>
         </TabsList>
 
@@ -384,6 +392,37 @@ const Settings = () => {
                     Change Password
                   </Button>
                 </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="integrations">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Link2 className="w-5 h-5" />
+                Connected Accounts
+              </CardTitle>
+              <CardDescription>
+                Manage your social media integrations
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="flex items-center justify-between p-4 border rounded-lg">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                    <Twitter className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium">Twitter</h3>
+                    <p className="text-sm text-gray-500">Connect your Twitter account to sync data</p>
+                  </div>
+                </div>
+                <Button onClick={handleConnectTwitter} variant="outline">
+                  <Twitter className="w-4 h-4 mr-2" />
+                  Connect
+                </Button>
               </div>
             </CardContent>
           </Card>

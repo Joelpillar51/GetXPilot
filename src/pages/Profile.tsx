@@ -14,11 +14,11 @@ import { useToast } from "@/hooks/use-toast";
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [profile, setProfile] = useState({
-    name: "John Doe",
-    username: "@johndoe",
+    name: "Joel Pillar",
+    username: "@joelpillar",
     bio: "Content creator and social media enthusiast. Building amazing things with AI.",
     location: "San Francisco, CA",
-    website: "https://johndoe.com",
+    website: "https://joelpillar.com",
     joinedDate: "March 2020"
   });
   const [editProfile, setEditProfile] = useState(profile);
