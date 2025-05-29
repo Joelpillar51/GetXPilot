@@ -10,6 +10,9 @@ import Dashboard from "./pages/Dashboard";
 import ContentStudio from "./pages/ContentStudio";
 import Automation from "./pages/Automation";
 import Analytics from "./pages/Analytics";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
+import Help from "./pages/Help";
 import NotFound from "./pages/NotFound";
 import { DashboardLayout } from "./components/DashboardLayout";
 
@@ -42,6 +45,21 @@ const App: React.FC = () => {
             <Route path="/analytics" element={
               <DashboardLayout>
                 <Analytics />
+              </DashboardLayout>
+            } />
+            <Route path="/profile" element={
+              <DashboardLayout>
+                <Profile />
+              </DashboardLayout>
+            } />
+            <Route path="/settings" element={
+              <DashboardLayout>
+                <Settings />
+              </DashboardLayout>
+            } />
+            <Route path="/help" element={
+              <DashboardLayout>
+                <Help />
               </DashboardLayout>
             } />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

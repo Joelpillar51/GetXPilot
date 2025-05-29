@@ -3,10 +3,9 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Plus, Calendar, Clock, Send, Image, Video, Mic, Sparkles, Edit, Trash2 } from "lucide-react";
+import { Plus, Calendar, Clock, Edit, Trash2, Sparkles } from "lucide-react";
 import { TweetModal } from "@/components/TweetModal";
 import { useToast } from "@/hooks/use-toast";
 
@@ -77,10 +76,14 @@ const ContentStudio = () => {
   };
 
   const handleEditDraft = (draftId: number) => {
-    toast({
-      title: "Edit Draft",
-      description: `Editing draft ${draftId}...`
-    });
+    const draft = drafts.find(d => d.id === draftId);
+    if (draft) {
+      toast({
+        title: "Edit Draft",
+        description: `Opening draft editor for: "${draft.content.substring(0, 30)}..."`
+      });
+      // In a real app, this would open the draft in an editor
+    }
   };
 
   const handleDeleteDraft = (draftId: number) => {
@@ -96,6 +99,17 @@ const ContentStudio = () => {
       title: "AI Ideas Generated",
       description: "New content ideas have been generated!"
     });
+  };
+
+  const handleTweetSubmit = (tweet: any) => {
+    if (tweet.status === "scheduled") {
+      setScheduledPosts(prev => [...prev, tweet]);
+    } else {
+      toast({
+        title: "Tweet Posted",
+        description: "Your tweet has been published successfully!"
+      });
+    }
   };
 
   return (
@@ -116,6 +130,7 @@ const ContentStudio = () => {
         <TabsContent value="create" className="space-y-6">
           <div className="grid lg:grid-cols-2 gap-6">
             <TweetModal
+              onSubmit={handleTweetSubmit}
               trigger={
                 <Card className="cursor-pointer hover:shadow-md transition-shadow">
                   <CardHeader>
@@ -262,18 +277,19 @@ const ContentStudio = () => {
               ) : (
                 <div className="space-y-4">
                   {drafts.map((draft) => (
-                    <div key={draft.id} className="flex items-center justify-between p-4 border rounded-lg">
+                    <div key={draft.id} className="flex items-center justify-between p-4 border rounded-lg hover:shadow-sm transition-shadow">
                       <div className="flex-1">
                         <p className="font-medium">{draft.content}</p>
                         <p className="text-sm text-gray-500 mt-1">Last updated: {draft.updatedAt}</p>
                       </div>
                       <div className="flex gap-2">
                         <Button 
-                          variant="ghost" 
+                          variant="outline" 
                           size="sm"
                           onClick={() => handleEditDraft(draft.id)}
                         >
-                          <Edit className="w-4 h-4" />
+                          <Edit className="w-4 h-4 mr-1" />
+                          Edit
                         </Button>
                         <Button 
                           variant="ghost" 
