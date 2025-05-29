@@ -8,8 +8,11 @@ import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, Zap, MessageSquare, Heart, Repeat, Settings, Play, Pause } from "lucide-react";
+import { AutomationRuleModal } from "@/components/AutomationRuleModal";
+import { useToast } from "@/hooks/use-toast";
 
 const Automation = () => {
+  const { toast } = useToast();
   const [rules, setRules] = useState([
     { id: 1, name: "Auto-reply to mentions", type: "reply", status: "active", triggers: 45 },
     { id: 2, name: "Like tweets with keywords", type: "like", status: "active", triggers: 128 },
@@ -22,6 +25,123 @@ const Automation = () => {
         ? { ...rule, status: rule.status === "active" ? "paused" : "active" }
         : rule
     ));
+    
+    const rule = rules.find(r => r.id === id);
+    toast({
+      title: `Rule ${rule?.status === "active" ? "Paused" : "Activated"}`,
+      description: `${rule?.name} has been ${rule?.status === "active" ? "paused" : "activated"}`
+    });
+  };
+
+  const handleCreateAutoReply = () => {
+    const keywords = (document.getElementById('reply-trigger') as HTMLInputElement)?.value;
+    const message = (document.getElementById('reply-message') as HTMLInputElement)?.value;
+    
+    if (!keywords || !message) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const newRule = {
+      id: Date.now(),
+      name: `Auto-reply: ${keywords}`,
+      type: "reply",
+      status: "active",
+      triggers: 0
+    };
+
+    setRules([...rules, newRule]);
+    toast({
+      title: "Auto-Reply Created",
+      description: "Your auto-reply rule is now active"
+    });
+
+    // Clear form
+    (document.getElementById('reply-trigger') as HTMLInputElement).value = '';
+    (document.getElementById('reply-message') as HTMLInputElement).value = '';
+  };
+
+  const handleCreateAutoLike = () => {
+    const keywords = (document.getElementById('like-keywords') as HTMLInputElement)?.value;
+    const limit = (document.getElementById('like-limit') as HTMLInputElement)?.value;
+    
+    if (!keywords || !limit) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const newRule = {
+      id: Date.now(),
+      name: `Auto-like: ${keywords}`,
+      type: "like",
+      status: "active",
+      triggers: 0
+    };
+
+    setRules([...rules, newRule]);
+    toast({
+      title: "Auto-Like Created",
+      description: "Your auto-like rule is now active"
+    });
+
+    // Clear form
+    (document.getElementById('like-keywords') as HTMLInputElement).value = '';
+    (document.getElementById('like-limit') as HTMLInputElement).value = '';
+  };
+
+  const handleCreateFollowBack = () => {
+    const criteria = (document.getElementById('follow-criteria') as HTMLInputElement)?.value;
+    const delay = (document.getElementById('follow-delay') as HTMLInputElement)?.value;
+    
+    if (!criteria || !delay) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const newRule = {
+      id: Date.now(),
+      name: `Follow-back: ${criteria}`,
+      type: "follow",
+      status: "active",
+      triggers: 0
+    };
+
+    setRules([...rules, newRule]);
+    toast({
+      title: "Follow-Back Created",
+      description: "Your follow-back rule is now active"
+    });
+
+    // Clear form
+    (document.getElementById('follow-criteria') as HTMLInputElement).value = '';
+    (document.getElementById('follow-delay') as HTMLInputElement).value = '';
+  };
+
+  const handleAddNewRule = () => {
+    toast({
+      title: "New Rule",
+      description: "Opening rule creation wizard..."
+    });
+  };
+
+  const handleEditRule = (ruleId: number) => {
+    const rule = rules.find(r => r.id === ruleId);
+    toast({
+      title: "Edit Rule",
+      description: `Editing ${rule?.name}...`
+    });
   };
 
   return (
@@ -44,10 +164,15 @@ const Automation = () => {
               <h2 className="text-xl font-semibold">Automation Rules</h2>
               <p className="text-gray-600">Manage your active automation rules</p>
             </div>
-            <Button>
-              <Plus className="w-4 h-4 mr-2" />
-              New Rule
-            </Button>
+            <AutomationRuleModal
+              trigger={
+                <Button>
+                  <Plus className="w-4 h-4 mr-2" />
+                  New Rule
+                </Button>
+              }
+              onSubmit={(rule) => setRules([...rules, rule])}
+            />
           </div>
 
           <div className="grid gap-4">
@@ -74,7 +199,11 @@ const Automation = () => {
                         checked={rule.status === "active"}
                         onCheckedChange={() => toggleRule(rule.id)}
                       />
-                      <Button variant="ghost" size="sm">
+                      <Button 
+                        variant="ghost" 
+                        size="sm"
+                        onClick={() => handleEditRule(rule.id)}
+                      >
                         <Settings className="w-4 h-4" />
                       </Button>
                     </div>
@@ -108,7 +237,7 @@ const Automation = () => {
                         <Label htmlFor="reply-message">Reply Message</Label>
                         <Input id="reply-message" placeholder="Thanks for reaching out!" />
                       </div>
-                      <Button className="w-full">
+                      <Button className="w-full" onClick={handleCreateAutoReply}>
                         <MessageSquare className="w-4 h-4 mr-2" />
                         Create Auto-Reply Rule
                       </Button>
@@ -131,7 +260,7 @@ const Automation = () => {
                         <Label htmlFor="like-limit">Daily Limit</Label>
                         <Input id="like-limit" type="number" placeholder="50" />
                       </div>
-                      <Button className="w-full">
+                      <Button className="w-full" onClick={handleCreateAutoLike}>
                         <Heart className="w-4 h-4 mr-2" />
                         Create Auto-Like Rule
                       </Button>
@@ -156,7 +285,7 @@ const Automation = () => {
                       <Input id="follow-delay" type="number" placeholder="2" />
                     </div>
                   </div>
-                  <Button className="w-full mt-4">
+                  <Button className="w-full mt-4" onClick={handleCreateFollowBack}>
                     <Repeat className="w-4 h-4 mr-2" />
                     Create Follow-Back Rule
                   </Button>

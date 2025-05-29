@@ -6,22 +6,97 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Plus, Calendar, Clock, Send, Image, Video, Mic, Sparkles } from "lucide-react";
+import { Plus, Calendar, Clock, Send, Image, Video, Mic, Sparkles, Edit, Trash2 } from "lucide-react";
+import { TweetModal } from "@/components/TweetModal";
+import { useToast } from "@/hooks/use-toast";
 
 const ContentStudio = () => {
   const [selectedTab, setSelectedTab] = useState("create");
+  const { toast } = useToast();
 
-  const scheduledPosts = [
+  const [scheduledPosts, setScheduledPosts] = useState([
     { id: 1, content: "Just launched our new feature! 🚀", scheduledFor: "Today, 2:00 PM", status: "scheduled" },
     { id: 2, content: "Thread about growth strategies...", scheduledFor: "Tomorrow, 9:00 AM", status: "scheduled" },
     { id: 3, content: "Behind the scenes content", scheduledFor: "Dec 1, 10:00 AM", status: "draft" },
-  ];
+  ]);
+
+  const [drafts, setDrafts] = useState([
+    { id: 4, content: "AI is changing the game for content creators...", status: "draft", updatedAt: "2 hours ago" },
+    { id: 5, content: "3 tools every solopreneur needs in 2024", status: "draft", updatedAt: "1 day ago" },
+  ]);
 
   const threadTemplates = [
     { id: 1, name: "Growth Tips", tweets: 5, category: "Education" },
     { id: 2, name: "Product Launch", tweets: 7, category: "Announcement" },
     { id: 3, name: "Behind the Scenes", tweets: 4, category: "Personal" },
   ];
+
+  const handleEditPost = (postId: number) => {
+    toast({
+      title: "Edit Mode",
+      description: `Editing post ${postId}...`
+    });
+  };
+
+  const handleDeletePost = (postId: number) => {
+    setScheduledPosts(scheduledPosts.filter(post => post.id !== postId));
+    toast({
+      title: "Post Deleted",
+      description: "Scheduled post has been deleted"
+    });
+  };
+
+  const handlePreviewTemplate = (templateId: number) => {
+    const template = threadTemplates.find(t => t.id === templateId);
+    toast({
+      title: "Template Preview",
+      description: `Previewing ${template?.name} template...`
+    });
+  };
+
+  const handleUseTemplate = (templateId: number) => {
+    const template = threadTemplates.find(t => t.id === templateId);
+    toast({
+      title: "Template Applied",
+      description: `Using ${template?.name} template for new thread`
+    });
+  };
+
+  const handleCreateDraft = () => {
+    const newDraft = {
+      id: Date.now(),
+      content: "New draft content...",
+      status: "draft",
+      updatedAt: "Just now"
+    };
+    setDrafts([newDraft, ...drafts]);
+    toast({
+      title: "Draft Created",
+      description: "New draft has been created"
+    });
+  };
+
+  const handleEditDraft = (draftId: number) => {
+    toast({
+      title: "Edit Draft",
+      description: `Editing draft ${draftId}...`
+    });
+  };
+
+  const handleDeleteDraft = (draftId: number) => {
+    setDrafts(drafts.filter(draft => draft.id !== draftId));
+    toast({
+      title: "Draft Deleted",
+      description: "Draft has been deleted"
+    });
+  };
+
+  const handleGenerateIdeas = () => {
+    toast({
+      title: "AI Ideas Generated",
+      description: "New content ideas have been generated!"
+    });
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -40,45 +115,22 @@ const ContentStudio = () => {
 
         <TabsContent value="create" className="space-y-6">
           <div className="grid lg:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Plus className="w-5 h-5" />
-                  Create New Tweet
-                </CardTitle>
-                <CardDescription>Craft your next viral tweet</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <Textarea
-                  placeholder="What's happening?"
-                  className="min-h-[120px] resize-none"
-                />
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Button variant="ghost" size="sm">
-                      <Image className="w-4 h-4" />
-                    </Button>
-                    <Button variant="ghost" size="sm">
-                      <Video className="w-4 h-4" />
-                    </Button>
-                    <Button variant="ghost" size="sm">
-                      <Mic className="w-4 h-4" />
-                    </Button>
-                  </div>
-                  <span className="text-sm text-gray-500">280 characters left</span>
-                </div>
-                <div className="flex gap-2">
-                  <Button className="flex-1">
-                    <Send className="w-4 h-4 mr-2" />
-                    Tweet Now
-                  </Button>
-                  <Button variant="outline">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    Schedule
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+            <TweetModal
+              trigger={
+                <Card className="cursor-pointer hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Plus className="w-5 h-5" />
+                      Create New Tweet
+                    </CardTitle>
+                    <CardDescription>Craft your next viral tweet</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-500">Click to open tweet composer</p>
+                  </CardContent>
+                </Card>
+              }
+            />
 
             <Card>
               <CardHeader>
@@ -90,7 +142,7 @@ const ContentStudio = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <Input placeholder="Topic or keyword..." />
-                <Button className="w-full" variant="outline">
+                <Button onClick={handleGenerateIdeas} className="w-full" variant="outline">
                   Generate Ideas
                 </Button>
                 <div className="space-y-2">
@@ -127,8 +179,20 @@ const ContentStudio = () => {
                       </div>
                     </div>
                     <div className="flex gap-2">
-                      <Button variant="ghost" size="sm">Edit</Button>
-                      <Button variant="ghost" size="sm">Delete</Button>
+                      <Button 
+                        variant="ghost" 
+                        size="sm"
+                        onClick={() => handleEditPost(post.id)}
+                      >
+                        <Edit className="w-4 h-4" />
+                      </Button>
+                      <Button 
+                        variant="ghost" 
+                        size="sm"
+                        onClick={() => handleDeletePost(post.id)}
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </Button>
                     </div>
                   </div>
                 ))}
@@ -151,8 +215,20 @@ const ContentStudio = () => {
                     <p className="text-sm text-gray-500 mb-3">{template.tweets} tweets</p>
                     <Badge variant="outline" className="mb-3">{template.category}</Badge>
                     <div className="flex gap-2">
-                      <Button size="sm" className="flex-1">Use Template</Button>
-                      <Button size="sm" variant="ghost">Preview</Button>
+                      <Button 
+                        size="sm" 
+                        className="flex-1"
+                        onClick={() => handleUseTemplate(template.id)}
+                      >
+                        Use Template
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        variant="ghost"
+                        onClick={() => handlePreviewTemplate(template.id)}
+                      >
+                        Preview
+                      </Button>
                     </div>
                   </div>
                 ))}
@@ -164,14 +240,53 @@ const ContentStudio = () => {
         <TabsContent value="drafts" className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Draft Posts</CardTitle>
-              <CardDescription>Continue working on your saved drafts</CardDescription>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle>Draft Posts</CardTitle>
+                  <CardDescription>Continue working on your saved drafts</CardDescription>
+                </div>
+                <Button onClick={handleCreateDraft}>
+                  <Plus className="w-4 h-4 mr-2" />
+                  New Draft
+                </Button>
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-center py-8">
-                <p className="text-gray-500 mb-4">No drafts yet</p>
-                <Button variant="outline">Create Your First Draft</Button>
-              </div>
+              {drafts.length === 0 ? (
+                <div className="text-center py-8">
+                  <p className="text-gray-500 mb-4">No drafts yet</p>
+                  <Button variant="outline" onClick={handleCreateDraft}>
+                    Create Your First Draft
+                  </Button>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {drafts.map((draft) => (
+                    <div key={draft.id} className="flex items-center justify-between p-4 border rounded-lg">
+                      <div className="flex-1">
+                        <p className="font-medium">{draft.content}</p>
+                        <p className="text-sm text-gray-500 mt-1">Last updated: {draft.updatedAt}</p>
+                      </div>
+                      <div className="flex gap-2">
+                        <Button 
+                          variant="ghost" 
+                          size="sm"
+                          onClick={() => handleEditDraft(draft.id)}
+                        >
+                          <Edit className="w-4 h-4" />
+                        </Button>
+                        <Button 
+                          variant="ghost" 
+                          size="sm"
+                          onClick={() => handleDeleteDraft(draft.id)}
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </CardContent>
           </Card>
         </TabsContent>
