@@ -184,7 +184,7 @@ const Index = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-3 group cursor-pointer">
               <img 
-                src="/lovable-uploads/7de9a17a-0aa6-4436-bdd3-5bc213b26a71.png" 
+                src="/lovable-uploads/8c72e556-e52f-4bd8-a2af-4e23b5e18435.png" 
                 alt="GetXPilot Logo" 
                 className="h-10 w-auto group-hover:scale-110 transition-transform duration-300"
               />
@@ -563,7 +563,7 @@ const Index = () => {
             <div>
               <div className="flex items-center space-x-3 mb-6">
                 <img 
-                  src="/lovable-uploads/7de9a17a-0aa6-4436-bdd3-5bc213b26a71.png" 
+                  src="/lovable-uploads/d04303cc-a47b-4888-929d-60e19d481024.png" 
                   alt="GetXPilot Logo" 
                   className="h-10 w-auto"
                 />

@@ -1,6 +1,4 @@
 
-import { Twitter } from "lucide-react";
-
 export const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-12">
@@ -8,10 +6,11 @@ export const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
-                <Twitter className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold">XCommand</span>
+              <img 
+                src="/lovable-uploads/d04303cc-a47b-4888-929d-60e19d481024.png" 
+                alt="GetXPilot Logo" 
+                className="h-8 w-auto"
+              />
             </div>
             <p className="text-gray-400">
               The AI-powered Twitter growth platform that turns your voice into viral content.
@@ -50,7 +49,7 @@ export const Footer = () => {
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 XCommand. All rights reserved.</p>
+          <p>&copy; 2024 GetXPilot. All rights reserved.</p>
         </div>
       </div>
     </footer>

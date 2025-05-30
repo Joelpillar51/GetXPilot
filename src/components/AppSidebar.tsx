@@ -1,5 +1,5 @@
 
-import { Twitter, Home, PenTool, Zap, BarChart3, Settings, Users, HelpCircle } from "lucide-react";
+import { Home, PenTool, Zap, BarChart3, Settings, Users, HelpCircle } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import {
   Sidebar,
@@ -41,10 +41,11 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarHeader>
         <div className="flex items-center gap-2 px-4 py-2">
-          <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
-            <Twitter className="w-5 h-5 text-white" />
-          </div>
-          <span className="text-xl font-bold text-gray-900">XCommand</span>
+          <img 
+            src="/lovable-uploads/d04303cc-a47b-4888-929d-60e19d481024.png" 
+            alt="GetXPilot Logo" 
+            className="h-8 w-auto"
+          />
         </div>
       </SidebarHeader>
       
@@ -59,6 +60,7 @@ export function AppSidebar() {
                     <SidebarMenuButton
                       asChild
                       isActive={location.pathname === item.url}
+                      className="data-[active=true]:bg-[#FF6154] data-[active=true]:text-white hover:bg-[#FF6154]/10 hover:text-[#FF6154]"
                     >
                       <Link to={item.url}>
                         <item.icon />
@@ -76,7 +78,7 @@ export function AppSidebar() {
       <SidebarFooter>
         <div className="px-4 py-2">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+            <div className="w-8 h-8 bg-[#FF6154] rounded-full flex items-center justify-center text-white font-semibold text-sm">
               JD
             </div>
             <div className="flex-1 min-w-0">

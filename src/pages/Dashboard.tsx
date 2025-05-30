@@ -16,36 +16,36 @@ const Dashboard = () => {
 
       {/* Top Stats Bar */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <Card>
+        <Card className="border-[#EAEAEA]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Followers</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+            <Users className="h-4 w-4 text-[#FF6154]" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">3,247</div>
             <p className="text-xs text-muted-foreground">
-              <span className="text-green-600">+73</span> from yesterday
+              <span className="text-[#10B981]">+73</span> from yesterday
             </p>
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="border-[#EAEAEA]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Engagement Rate</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            <TrendingUp className="h-4 w-4 text-[#FF6154]" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">4.2%</div>
             <p className="text-xs text-muted-foreground">
-              <span className="text-green-600">+0.8%</span> this week
+              <span className="text-[#10B981]">+0.8%</span> this week
             </p>
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="border-[#EAEAEA]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Scheduled Today</CardTitle>
-            <Calendar className="h-4 w-4 text-muted-foreground" />
+            <Calendar className="h-4 w-4 text-[#FF6154]" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">5</div>
@@ -53,10 +53,10 @@ const Dashboard = () => {
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="border-[#EAEAEA]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Rules</CardTitle>
-            <MessageSquare className="h-4 w-4 text-muted-foreground" />
+            <MessageSquare className="h-4 w-4 text-[#FF6154]" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">3</div>
