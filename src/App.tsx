@@ -8,6 +8,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Onboarding from "./pages/Onboarding";
+import TwitterConnect from "./pages/TwitterConnect";
+import SetupLoading from "./pages/SetupLoading";
 import Dashboard from "./pages/Dashboard";
 import ContentStudio from "./pages/ContentStudio";
 import Automation from "./pages/Automation";
@@ -31,6 +34,9 @@ const App: React.FC = () => {
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/onboarding" element={<Onboarding />} />
+            <Route path="/twitter-connect" element={<TwitterConnect />} />
+            <Route path="/setup-loading" element={<SetupLoading />} />
             <Route path="/dashboard" element={
               <DashboardLayout>
                 <Dashboard />
