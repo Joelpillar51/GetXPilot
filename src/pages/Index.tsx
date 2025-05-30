@@ -62,39 +62,6 @@ const Index = () => {
     }
   ];
 
-  const features = [
-    {
-      icon: <Link className="w-6 h-6" />,
-      title: "Thread Composer",
-      description: "Drag-and-drop thread editor with live preview"
-    },
-    {
-      icon: <Eye className="w-6 h-6" />,
-      title: "Smart Analytics",
-      description: "See what's working and what's not"
-    },
-    {
-      icon: <Bot className="w-6 h-6" />,
-      title: "AI Tweet Generator",
-      description: "Trained on high-performing tweets"
-    },
-    {
-      icon: <Archive className="w-6 h-6" />,
-      title: "Content Library",
-      description: "Save top tweets and templates"
-    },
-    {
-      icon: <Shuffle className="w-6 h-6" />,
-      title: "Reposting Engine",
-      description: "Auto-reshare evergreen content"
-    },
-    {
-      icon: <Upload className="w-6 h-6" />,
-      title: "Bulk Scheduling",
-      description: "Upload a full week's content in minutes"
-    }
-  ];
-
   const useCases = [
     {
       icon: <Users className="w-6 h-6" />,
@@ -118,16 +85,106 @@ const Index = () => {
     }
   ];
 
-  const testimonials = [
+  const socialProofs = [
     {
-      name: "Fola B.",
-      role: "Creator & Ghostwriter",
-      content: "GetXPilot helped me grow from 0 to 10k followers without stressing what to post."
+      name: "Sarah Chen",
+      handle: "@sarahbuilds",
+      role: "Tech Creator",
+      beforeFollowers: "1.2K",
+      afterFollowers: "15.8K",
+      timeframe: "3 months",
+      content: "GetXPilot turned my random thoughts into viral tweets. The AI writing feature is incredible - it captures my voice perfectly while making my content way more engaging.",
+      avatar: "SC"
     },
     {
-      name: "James T.",
-      role: "Founder, BrandStudio",
-      content: "It's like having a Twitter VA and growth strategist in one place."
+      name: "Marcus Rodriguez",
+      handle: "@marketingmarc",
+      role: "Growth Marketer",
+      beforeFollowers: "850",
+      afterFollowers: "12.3K",
+      timeframe: "4 months",
+      content: "Went from posting sporadically to having a consistent content strategy. The automation features saved me 10+ hours per week while growing my audience faster than ever.",
+      avatar: "MR"
+    },
+    {
+      name: "Emma Thompson",
+      handle: "@emmawrites",
+      role: "Content Strategist",
+      beforeFollowers: "2.1K",
+      afterFollowers: "28.7K",
+      timeframe: "6 months",
+      content: "The analytics insights helped me understand what my audience actually wants. Now every tweet feels purposeful and data-driven. Game changer for my personal brand.",
+      avatar: "ET"
+    },
+    {
+      name: "David Park",
+      handle: "@davidcodes",
+      role: "Software Engineer",
+      beforeFollowers: "450",
+      afterFollowers: "8.9K",
+      timeframe: "2 months",
+      content: "As a developer, I love how GetXPilot automated the tedious parts of Twitter while keeping my authentic voice. The thread composer is pure magic.",
+      avatar: "DP"
+    },
+    {
+      name: "Lisa Rodriguez",
+      handle: "@lisadesigns",
+      role: "UI/UX Designer",
+      beforeFollowers: "1.8K",
+      afterFollowers: "22.4K",
+      timeframe: "5 months",
+      content: "The visual scheduler changed everything. I can see my entire content calendar at a glance and the optimal posting times feature doubled my engagement rates.",
+      avatar: "LR"
+    },
+    {
+      name: "James Wilson",
+      handle: "@jamesstartup",
+      role: "Founder",
+      beforeFollowers: "680",
+      afterFollowers: "11.2K",
+      timeframe: "3 months",
+      content: "Building in public became so much easier with GetXPilot. The AI suggestions for my startup journey posts consistently hit the mark and drive real engagement.",
+      avatar: "JW"
+    },
+    {
+      name: "Alex Kim",
+      handle: "@alexfitness",
+      role: "Fitness Coach",
+      beforeFollowers: "920",
+      afterFollowers: "16.7K",
+      timeframe: "4 months",
+      content: "My fitness tips now reach thousands instead of dozens. The content templates for my niche were spot-on and the growth has been incredible for my coaching business.",
+      avatar: "AK"
+    },
+    {
+      name: "Rachel Green",
+      handle: "@rachelcooks",
+      role: "Food Blogger",
+      beforeFollowers: "1.5K",
+      afterFollowers: "19.3K",
+      timeframe: "5 months",
+      content: "Recipe tweets that used to get 5 likes now regularly hit 500+. GetXPilot helped me find the perfect timing and format for my food content.",
+      avatar: "RG"
+    },
+    {
+      name: "Michael Torres",
+      handle: "@miketalkstech",
+      role: "Tech Reviewer",
+      beforeFollowers: "780",
+      afterFollowers: "13.5K",
+      timeframe: "3 months",
+      content: "Tech Twitter is competitive, but GetXPilot gave me the edge. My product reviews now reach decision-makers and my influence in the space has grown exponentially.",
+      avatar: "MT"
+    },
+    {
+      name: "Sophie Laurent",
+      handle: "@sophiereads",
+      role: "Book Reviewer",
+      beforeFollowers: "1.1K",
+      afterFollowers: "14.8K",
+      timeframe: "4 months",
+      content: "BookTwitter embraced my content like never before. The thread templates for book reviews and the engagement automation helped me build a real community of readers.",
+      avatar: "SL"
     }
   ];
 
@@ -210,7 +267,7 @@ const Index = () => {
           <div className="text-center max-w-5xl mx-auto">
             <div className={`transition-all duration-1000 ${isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`}>
               <Badge className="mb-8 px-6 py-3 bg-[#FACC15]/10 text-[#FACC15] border-[#FACC15]/20 hover:scale-105 transition-transform duration-300">
-                ✨ Used by 6,000+ top creators and marketing teams
+                Used by 6,000+ top creators and marketing teams
               </Badge>
               
               <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight text-[#1E1E1E] tracking-tight">
@@ -227,12 +284,12 @@ const Index = () => {
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
                 <Button size="lg" className="text-xl px-10 py-8 bg-[#FF6154] hover:bg-[#FF6154]/90 text-white hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-xl" onClick={() => navigate('/signup')}>
-                  👉 Get Started Free – No Card Required
+                  Get Started Free – No Card Required
                   <ArrowRight className="ml-3 w-6 h-6" />
                 </Button>
                 <Button variant="outline" size="lg" className="text-xl px-10 py-8 border-2 border-[#EAEAEA] text-[#4A4A4A] hover:border-[#FF6154] hover:text-[#FF6154] hover:scale-105 transform transition-all duration-300">
                   <Play className="mr-3 w-6 h-6" />
-                  🎥 Watch Demo
+                  Watch Demo
                 </Button>
               </div>
             </div>
@@ -298,7 +355,7 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <h2 className="text-4xl md:text-5xl font-bold text-[#1E1E1E] leading-tight">
-                ✍️ AI-Powered Writing, Refined for 
+                AI-Powered Writing, Refined for 
                 <span className="text-[#FF6154]"> Twitter Growth</span>
               </h2>
               <p className="text-xl text-[#4A4A4A] leading-relaxed">
@@ -364,7 +421,7 @@ const Index = () => {
             </div>
             <div className="space-y-8 lg:order-2">
               <h2 className="text-4xl md:text-5xl font-bold text-[#1E1E1E] leading-tight">
-                ⏱️ Schedule Weeks of Content in 
+                Schedule Weeks of Content in 
                 <span className="text-[#FF6154]"> Minutes</span>
               </h2>
               <p className="text-xl text-[#4A4A4A] leading-relaxed">
@@ -387,7 +444,7 @@ const Index = () => {
       <section id="use-cases" data-animate className="py-20 px-6 lg:px-8 bg-[#FFF4ED]">
         <div className="max-w-7xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-1000 ${animatedSections.has('use-cases') ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#1E1E1E]">🎯 Who It's For</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#1E1E1E]">Who It's For</h2>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -406,28 +463,141 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section - Bento Grid */}
       <section id="features" data-animate className="py-20 px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-1000 ${animatedSections.has('features') ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#1E1E1E]">🔍 Powerful Features</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#1E1E1E]">Powerful Features</h2>
             <p className="text-xl text-[#4A4A4A] max-w-3xl mx-auto">
               Everything you need to dominate Twitter, all in one place.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className={`group hover:shadow-xl transition-all duration-500 hover:-translate-y-3 border-[#EAEAEA] ${animatedSections.has('features') ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`} style={{ animationDelay: `${index * 100}ms` }}>
-                <CardContent className="p-8">
-                  <div className="w-14 h-14 bg-[#FF6154]/10 rounded-2xl flex items-center justify-center mb-6 text-[#FF6154] group-hover:scale-110 transition-transform duration-300">
-                    {feature.icon}
+          <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${animatedSections.has('features') ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`}>
+            {/* Large Feature Card - Thread Composer */}
+            <Card className="md:col-span-2 lg:col-span-2 group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-[#EAEAEA] bg-gradient-to-br from-blue-50 to-indigo-50">
+              <CardContent className="p-8 h-full flex flex-col justify-between">
+                <div>
+                  <div className="w-14 h-14 bg-[#4E7EFF]/10 rounded-2xl flex items-center justify-center mb-6 text-[#4E7EFF] group-hover:scale-110 transition-transform duration-300">
+                    <Link className="w-7 h-7" />
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-[#1E1E1E]">{feature.title}</h3>
-                  <p className="text-[#4A4A4A] leading-relaxed">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+                  <h3 className="text-2xl font-bold mb-4 text-[#1E1E1E]">Thread Composer</h3>
+                  <p className="text-[#4A4A4A] leading-relaxed text-lg mb-6">
+                    Drag-and-drop thread editor with live preview. Create engaging thread sequences with media, polls, and optimal formatting.
+                  </p>
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                  <div className="flex items-center space-x-2 mb-3">
+                    <div className="w-8 h-8 bg-[#4E7EFF] rounded-full flex items-center justify-center text-white text-xs font-bold">1</div>
+                    <div className="flex-1 h-2 bg-gray-200 rounded"></div>
+                  </div>
+                  <div className="text-sm text-gray-600">Hook: "Here's why 90% of startups fail..."</div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Analytics Card */}
+            <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-[#EAEAEA] bg-gradient-to-br from-green-50 to-emerald-50">
+              <CardContent className="p-8 h-full">
+                <div className="w-14 h-14 bg-[#10B981]/10 rounded-2xl flex items-center justify-center mb-6 text-[#10B981] group-hover:scale-110 transition-transform duration-300">
+                  <Eye className="w-7 h-7" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-[#1E1E1E]">Smart Analytics</h3>
+                <p className="text-[#4A4A4A] leading-relaxed mb-6">
+                  See what's working and what's not with detailed performance insights.
+                </p>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-gray-600">Impressions</span>
+                    <span className="text-sm font-bold text-[#10B981]">+234%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-gray-600">Engagement</span>
+                    <span className="text-sm font-bold text-[#10B981]">+187%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-gray-600">Followers</span>
+                    <span className="text-sm font-bold text-[#10B981]">+156%</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* AI Generator Card */}
+            <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-[#EAEAEA] bg-gradient-to-br from-purple-50 to-violet-50">
+              <CardContent className="p-8 h-full">
+                <div className="w-14 h-14 bg-[#8B5CF6]/10 rounded-2xl flex items-center justify-center mb-6 text-[#8B5CF6] group-hover:scale-110 transition-transform duration-300">
+                  <Bot className="w-7 h-7" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-[#1E1E1E]">AI Tweet Generator</h3>
+                <p className="text-[#4A4A4A] leading-relaxed mb-6">
+                  Trained on high-performing tweets to match your voice and style.
+                </p>
+                <div className="bg-white rounded-lg p-3 text-sm text-gray-600 italic border border-purple-100">
+                  "Just discovered a productivity hack that changed everything..."
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Content Library Card */}
+            <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-[#EAEAEA] bg-gradient-to-br from-orange-50 to-red-50">
+              <CardContent className="p-8 h-full">
+                <div className="w-14 h-14 bg-[#FF6154]/10 rounded-2xl flex items-center justify-center mb-6 text-[#FF6154] group-hover:scale-110 transition-transform duration-300">
+                  <Archive className="w-7 h-7" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-[#1E1E1E]">Content Library</h3>
+                <p className="text-[#4A4A4A] leading-relaxed mb-6">
+                  Save top tweets and templates for easy reuse and inspiration.
+                </p>
+                <div className="space-y-2">
+                  <div className="bg-white rounded p-2 text-xs border border-orange-100">Template: Product Launch</div>
+                  <div className="bg-white rounded p-2 text-xs border border-orange-100">Template: Monday Motivation</div>
+                  <div className="bg-white rounded p-2 text-xs border border-orange-100">Template: Behind the Scenes</div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Reposting Engine */}
+            <Card className="md:col-span-2 lg:col-span-2 group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-[#EAEAEA] bg-gradient-to-br from-yellow-50 to-amber-50">
+              <CardContent className="p-8 h-full flex flex-col justify-between">
+                <div>
+                  <div className="w-14 h-14 bg-[#FACC15]/10 rounded-2xl flex items-center justify-center mb-6 text-[#FACC15] group-hover:scale-110 transition-transform duration-300">
+                    <Shuffle className="w-7 h-7" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 text-[#1E1E1E]">Reposting Engine</h3>
+                  <p className="text-[#4A4A4A] leading-relaxed text-lg mb-6">
+                    Auto-reshare evergreen content at optimal intervals to maximize reach and engagement without appearing repetitive.
+                  </p>
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow-sm border border-yellow-100">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium">Next repost in:</span>
+                    <span className="text-sm bg-[#FACC15] text-white px-2 py-1 rounded">2 days</span>
+                  </div>
+                  <div className="text-xs text-gray-600">"5 productivity tips that changed my life..."</div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Bulk Scheduling */}
+            <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-[#EAEAEA] bg-gradient-to-br from-gray-50 to-slate-50">
+              <CardContent className="p-8 h-full">
+                <div className="w-14 h-14 bg-gray-600/10 rounded-2xl flex items-center justify-center mb-6 text-gray-600 group-hover:scale-110 transition-transform duration-300">
+                  <Upload className="w-7 h-7" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-[#1E1E1E]">Bulk Scheduling</h3>
+                <p className="text-[#4A4A4A] leading-relaxed mb-6">
+                  Upload a full week's content in minutes with CSV import.
+                </p>
+                <div className="bg-white rounded-lg p-3 border border-gray-200">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <FileText className="w-4 h-4 text-gray-500" />
+                    <span className="text-sm">content_batch.csv</span>
+                  </div>
+                  <div className="text-xs text-gray-500">25 tweets ready to schedule</div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -436,24 +606,48 @@ const Index = () => {
       <section className="py-20 px-6 lg:px-8 bg-[#FFF4ED]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#1E1E1E]">🧠 What Our Users Say</h2>
-            <p className="text-xl text-[#4A4A4A]">Join thousands of successful creators</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#1E1E1E]">Real Growth Stories</h2>
+            <p className="text-xl text-[#4A4A4A]">See how creators like you achieved dramatic growth with GetXPilot</p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {testimonials.map((testimonial, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {socialProofs.map((proof, index) => (
               <Card key={index} className="hover:shadow-xl transition-all duration-300 border-[#EAEAEA] hover:-translate-y-2">
                 <CardContent className="p-8 bg-white">
+                  <div className="flex items-center mb-6">
+                    <div className="w-12 h-12 bg-[#FF6154] rounded-full flex items-center justify-center text-white font-bold mr-4">
+                      {proof.avatar}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#1E1E1E]">{proof.name}</h4>
+                      <p className="text-sm text-[#4A4A4A]">{proof.handle} • {proof.role}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4 mb-6">
+                    <div className="flex justify-between items-center mb-2">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-gray-600">{proof.beforeFollowers}</div>
+                        <div className="text-xs text-gray-500">Before</div>
+                      </div>
+                      <ArrowRight className="w-5 h-5 text-[#10B981]" />
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-[#10B981]">{proof.afterFollowers}</div>
+                        <div className="text-xs text-gray-500">After</div>
+                      </div>
+                    </div>
+                    <div className="text-center text-sm text-[#10B981] font-medium">
+                      Growth in {proof.timeframe}
+                    </div>
+                  </div>
+                  
                   <div className="flex mb-4">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-[#FACC15] text-[#FACC15]" />
+                      <Star key={i} className="w-4 h-4 fill-[#FACC15] text-[#FACC15]" />
                     ))}
                   </div>
-                  <p className="text-lg text-[#4A4A4A] italic leading-relaxed mb-6">"{testimonial.content}"</p>
-                  <div>
-                    <h4 className="font-bold text-[#1E1E1E]">{testimonial.name}</h4>
-                    <p className="text-sm text-[#4A4A4A]">{testimonial.role}</p>
-                  </div>
+                  
+                  <p className="text-[#4A4A4A] italic leading-relaxed">"{proof.content}"</p>
                 </CardContent>
               </Card>
             ))}
@@ -465,7 +659,7 @@ const Index = () => {
       <section id="pricing" data-animate className="py-20 px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-1000 ${animatedSections.has('pricing') ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#1E1E1E]">💸 Pick a Plan That Fits Your Growth Stage</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#1E1E1E]">Pick a Plan That Fits Your Growth Stage</h2>
             <p className="text-xl text-[#4A4A4A] max-w-3xl mx-auto">
               Start free, upgrade when you're ready. No hidden fees.
             </p>
@@ -518,7 +712,7 @@ const Index = () => {
       <section id="faq" data-animate className="py-20 px-6 lg:px-8 bg-[#FFF4ED]">
         <div className="max-w-4xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-1000 ${animatedSections.has('faq') ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#1E1E1E]">❓ Frequently Asked Questions</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#1E1E1E]">Frequently Asked Questions</h2>
           </div>
           
           <div className="space-y-6">
@@ -546,7 +740,7 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="text-lg px-8 py-6 bg-white text-[#FF6154] hover:bg-white/90 hover:scale-105 transition-all duration-300 shadow-lg" onClick={() => navigate('/signup')}>
-              👉 Start Free
+              Start Free
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-2 border-white text-white hover:bg-white/10 hover:scale-105 transition-all duration-300">
@@ -572,8 +766,8 @@ const Index = () => {
                 Your mission control for Twitter. Create. Schedule. Grow.
               </p>
               <div className="space-y-2 text-white/70">
-                <p>🐦 @GetXPilot</p>
-                <p>✉️ support@getxpilot.io</p>
+                <p>@GetXPilot</p>
+                <p>support@getxpilot.io</p>
               </div>
             </div>
             
