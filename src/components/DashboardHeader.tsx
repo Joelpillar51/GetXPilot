@@ -1,8 +1,9 @@
 
 import { Button } from "@/components/ui/button";
-import { Bell, Settings, Link2 } from "lucide-react";
+import { Bell, Settings, Link2, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 
 export const DashboardHeader = () => {
   return (
@@ -10,7 +11,7 @@ export const DashboardHeader = () => {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <img 
-            src="/lovable-uploads/8c72e556-e52f-4bd8-a2af-4e23b5e18435.png" 
+            src="/lovable-uploads/d04303cc-a47b-4888-929d-60e19d481024.png" 
             alt="GetXPilot Logo" 
             className="h-8 w-auto"
           />
@@ -24,20 +25,28 @@ export const DashboardHeader = () => {
         </nav>
         
         <div className="flex items-center space-x-4">
-          <Button variant="outline" size="sm" className="border-[#FF6154] text-[#FF6154] hover:bg-[#FF6154] hover:text-white">
-            <Link2 className="w-4 h-4 mr-2" />
-            Connect Twitter
-          </Button>
-          <Button variant="ghost" size="sm">
+          {/* Connected Twitter Account */}
+          <div className="flex items-center space-x-2 px-3 py-2 bg-gray-50 rounded-lg border">
+            <Twitter className="w-4 h-4 text-[#1DA1F2]" />
+            <span className="text-sm text-gray-700">@joelpilot</span>
+            <Badge variant="secondary" className="bg-green-100 text-green-700 text-xs">
+              Connected
+            </Badge>
+          </div>
+
+          <Button variant="ghost" size="sm" className="hover:bg-gray-100">
             <Bell className="w-4 h-4" />
           </Button>
+          
           <Link to="/settings">
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="sm" className="hover:bg-gray-100">
               <Settings className="w-4 h-4" />
             </Button>
           </Link>
+          
+          {/* User Profile */}
           <Link to="/profile">
-            <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+            <Button variant="ghost" size="sm" className="flex items-center space-x-2 hover:bg-gray-100">
               <Avatar className="w-6 h-6">
                 <AvatarFallback className="bg-[#FF6154] text-white text-xs">
                   JP
